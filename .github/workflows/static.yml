@@ -22,10 +22,7 @@ jobs:
         coverage: none
 
     - name: Install Dependencies
-      run: composer update --${{ matrix.dependency-version }} --no-interaction --prefer-dist --no-progress --ansi
-
-    - name: Install Pint
-      run: composer global require laravel/pint --dev
+      run: composer update --no-interaction --prefer-dist --no-progress --ansi
 
     - name: Run Pint
       run: pint --test --ansi
