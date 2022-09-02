@@ -10,6 +10,7 @@ use SocialiteProviders\Manager\OAuth2\User;
 class Provider extends AbstractProvider
 {
     public const IDENTIFIER = 'WORKSOME';
+
     public const URL = 'https://auth.worksome.com';
 
     /** {@inheritdoc} */
