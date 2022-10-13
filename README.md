@@ -26,6 +26,7 @@ Please see the [Base Installation Guide](https://socialiteproviders.com/usage), 
 
     // Optional
     'auth_uri' => env('WORKSOME_AUTH_URI', 'https://auth.worksome.com'),
+    'auth_redirect_uri' => env('WORKSOME_AUTH_REDIRECT_URI', 'https://auth.worksome.test'),
 ],
 ```
 
