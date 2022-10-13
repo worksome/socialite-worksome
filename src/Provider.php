@@ -22,7 +22,9 @@ class Provider extends AbstractProvider
     /** {@inheritdoc} */
     protected function getAuthUrl($state)
     {
-        return $this->buildAuthUrlFromBase($this->getUri('/oauth/authorize'), $state);
+        $redirectUri = $this->getConfig('auth_redirect_uri', $this->getUri());
+
+        return $this->buildAuthUrlFromBase("{$redirectUri}/oauth/authorize", $state);
     }
 
     /** {@inheritdoc} */
@@ -70,6 +72,6 @@ class Provider extends AbstractProvider
     /** {@inheritdoc} */
     public static function additionalConfigKeys()
     {
-        return ['auth_uri'];
+        return ['auth_uri', 'auth_redirect_uri'];
     }
 }
