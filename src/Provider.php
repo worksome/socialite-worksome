@@ -20,7 +20,7 @@ class Provider extends AbstractProvider
     protected $scopeSeparator = ' ';
 
     /** {@inheritdoc} */
-    protected function getAuthUrl($state)
+    protected function getAuthUrl($state): string
     {
         $redirectUri = $this->getConfig('auth_redirect_uri', $this->getUri());
 
@@ -28,7 +28,7 @@ class Provider extends AbstractProvider
     }
 
     /** {@inheritdoc} */
-    protected function getTokenUrl()
+    protected function getTokenUrl(): string
     {
         return $this->getUri('/oauth/token');
     }
@@ -46,7 +46,7 @@ class Provider extends AbstractProvider
     }
 
     /** {@inheritdoc} */
-    protected function mapUserToObject(array $user)
+    protected function mapUserToObject(array $user): User
     {
         return (new User())->setRaw($user)->map([
             'id' => Arr::get($user, 'id'),
@@ -62,7 +62,7 @@ class Provider extends AbstractProvider
     }
 
     /** {@inheritdoc} */
-    public static function additionalConfigKeys()
+    public static function additionalConfigKeys(): array
     {
         return ['auth_uri', 'auth_redirect_uri'];
     }
