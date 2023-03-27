@@ -74,7 +74,7 @@ The MIT License (MIT). Please see [License File](LICENSE.md) for more informatio
 
 [ico-version]: https://img.shields.io/packagist/v/worksome/socialite.svg?style=flat-square
 [ico-license]: https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square
-[ico-github-actions]: https://img.shields.io/github/workflow/status/worksome/socialite/Tests.svg?style=flat-square
+[ico-github-actions]: https://img.shields.io/github/actions/workflow/status/worksome/socialite-worksome/tests.yml?branch=main&style=flat-square
 
 [link-packagist]: https://packagist.org/packages/worksome/socialite
 [link-github-actions]: https://github.com/worksome/socialite/actions
