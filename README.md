@@ -61,7 +61,7 @@ return Socialite::driver('worksome')->redirect();
 
 ## Change log
 
-Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
+Please see [GitHub Releases](https://github.com/worksome/socialite-worksome/releases) for more information on what has changed recently.
 
 ## Credits
 
