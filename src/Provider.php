@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Worksome\Socialite;
 
 use GuzzleHttp\RequestOptions;
@@ -9,9 +11,9 @@ use SocialiteProviders\Manager\OAuth2\User;
 
 class Provider extends AbstractProvider
 {
-    public const IDENTIFIER = 'WORKSOME';
+    public const string IDENTIFIER = 'WORKSOME';
 
-    public const URL = 'https://auth.worksome.com';
+    public const string URL = 'https://auth.worksome.com';
 
     /** {@inheritdoc} */
     protected $scopes = [''];
@@ -24,6 +26,7 @@ class Provider extends AbstractProvider
     {
         $redirectUri = $this->getConfig('auth_redirect_uri', $this->getUri());
 
+        // @phpstan-ignore encapsedStringPart.nonString
         return $this->buildAuthUrlFromBase("{$redirectUri}/oauth/authorize", $state);
     }
 
@@ -42,13 +45,14 @@ class Provider extends AbstractProvider
             ],
         ]);
 
+        // @phpstan-ignore return.type
         return json_decode((string) $response->getBody(), true);
     }
 
     /** {@inheritdoc} */
     protected function mapUserToObject(array $user): User
     {
-        return (new User())->setRaw($user)->map([
+        return (new User)->setRaw($user)->map([
             'id' => Arr::get($user, 'id'),
             'name' => Arr::get($user, 'name'),
             'email' => Arr::get($user, 'email'),
@@ -58,7 +62,11 @@ class Provider extends AbstractProvider
 
     protected function getUri(string $path = ''): string
     {
-        return $this->getConfig('auth_uri', static::URL).$path;
+        $url = $this->getConfig('auth_uri', static::URL);
+
+        assert(is_string($url));
+
+        return "{$url}{$path}";
     }
 
     /** {@inheritdoc} */

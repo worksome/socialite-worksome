@@ -1,50 +1,47 @@
 name: Static Analysis
 
-on: ['push', 'pull_request']
+on:
+  push:
+    paths:
+      - '**.php'
+      - 'phpstan.neon.dist'
 
 jobs:
-  pint:
+  phpstan:
+    name: PHPStan
     runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
 
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          coverage: none
+
+      - name: Install composer dependencies
+        uses: ramsey/composer-install@v3
+
+      - name: Run PHPStan
+        run: composer test:types
+
+  pint:
     name: Pint
 
-    steps:
-
-    - name: Checkout
-      uses: actions/checkout@v4
-
-    - name: Setup PHP
-      uses: shivammathur/setup-php@v2
-      with:
-        php-version: 8.2
-        extensions: zip
-        tools: composer
-        coverage: none
-
-    - name: Install Dependencies
-      run: composer update --no-interaction --prefer-dist --no-progress --ansi
-
-    - name: Run Pint
-      run: vendor/bin/pint --test --ansi
-
-  phpstan:
     runs-on: ubuntu-latest
 
-    name: PHPStan
-
     steps:
-    - name: Checkout
-      uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
 
-    - name: Setup PHP
-      uses: shivammathur/setup-php@v2
-      with:
-        php-version: 8.2
-        tools: composer
-        coverage: none
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          coverage: none
 
-    - name: Install Dependencies
-      run: composer update --no-interaction --prefer-dist --no-progress --ansi
+      - name: Install Dependencies
+        run: composer update --prefer-dist --no-interaction --no-progress --ansi
 
-    - name: Run PHPStan
-      run: vendor/bin/phpstan analyse --no-progress --ansi
+      - name: Run Pint
+        run: composer test:style

@@ -4,16 +4,16 @@
     "description": "A Worksome provider for Laravel Socialite",
     "license": "MIT",
     "require": {
-        "php": "^8.2",
+        "php": "^8.3",
         "ext-json": "*",
         "socialiteproviders/manager": "^4.5"
     },
     "require-dev": {
-        "laravel/pint": "^1.13.10",
-        "orchestra/testbench": "^8.21 || ^9.0",
-        "pestphp/pest": "^2.33",
-        "phpstan/phpstan": "^1.10",
-        "symfony/var-dumper": "^6.4 || ^7.0"
+        "laravel/pint": "^1.21",
+        "orchestra/testbench": "^9.12 || ^10.1",
+        "pestphp/pest": "^3.7",
+        "phpstan/phpstan": "^2.1",
+        "symfony/var-dumper": "^6.4 || ^7.2"
     },
     "autoload": {
         "psr-4": {
@@ -27,11 +27,11 @@
     },
     "scripts": {
         "lint": "pint --ansi",
-        "test:lint": "pint --test --ansi",
+        "test:style": "pint --test --ansi",
         "test:types": "phpstan analyse --ansi --memory-limit=-1",
         "test:unit": "pest --colors=always",
         "test": [
-            "@test:lint",
+            "@test:style",
             "@test:types",
             "@test:unit"
         ]
