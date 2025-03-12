@@ -1,6 +1,10 @@
-parameters:
-  level: 5
-  paths:
-    - src/
+includes:
+    - phpstan-baseline.neon
 
-  reportUnmatchedIgnoredErrors: true
+parameters:
+    level: max
+    paths:
+        - src
+    tmpDir: build/phpstan
+    parallel:
+            processTimeout: 300.0
