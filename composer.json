@@ -4,16 +4,16 @@
     "description": "A Worksome provider for Laravel Socialite",
     "license": "MIT",
     "require": {
-        "php": "^8.3",
+        "php": "^8.4",
         "ext-json": "*",
-        "socialiteproviders/manager": "^4.5"
+        "socialiteproviders/manager": "^4.8"
     },
     "require-dev": {
-        "laravel/pint": "^1.21",
-        "orchestra/testbench": "^9.12 || ^10.1",
-        "pestphp/pest": "^3.7",
+        "laravel/pint": "^1.27",
+        "orchestra/testbench": "^10.8 || ^11.0",
+        "pestphp/pest": "^4.4",
         "phpstan/phpstan": "^2.1",
-        "symfony/var-dumper": "^6.4 || ^7.2"
+        "symfony/var-dumper": "^7.4 || ^8.0"
     },
     "autoload": {
         "psr-4": {
