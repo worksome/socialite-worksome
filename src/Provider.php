@@ -45,7 +45,6 @@ class Provider extends AbstractProvider
             ],
         ]);
 
-        // @phpstan-ignore return.type
         return json_decode((string) $response->getBody(), true);
     }
 
