@@ -13,7 +13,7 @@ class Provider extends AbstractProvider
 {
     public const string IDENTIFIER = 'WORKSOME';
 
-    public const string URL = 'https://auth.worksome.com';
+    public const string URL = 'https://use.worksome.com';
 
     /** {@inheritdoc} */
     protected $scopes = [''];
